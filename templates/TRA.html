@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TRA</title>
+    <style>
+        /* .form-group {
+            margin-bottom: 10px;
+        } */
+
+        body {
+        background-color: #182D3C; /* 設定網頁背景顏色為灰色#0f2d3f */
+        margin: 0; /* 移除預設的頁面邊距 */
+        padding: 0; /* 移除預設的元素內距 */
+      }
+
+      .content-search {
+        background-color: #F7EAE1; /* 設定中間長方形的背景顏色為白色 原#fff8f2*/
+        width: 600px; /* 設定寬度 */
+        height: auto; /* 設定高度 */
+        margin: 40px auto; /* 水平置中，並設定上下邊距 */
+      }
+
+      .content-result {
+        background-color: #F7EAE1; /* 設定中間長方形的背景顏色為白色 原#fff8f2*/
+        width: 600px; /* 設定寬度 */
+        height: auto; /* 設定高度 */
+        margin: 40px auto; /* 水平置中，並設定上下邊距 */
+      }
+
+      .bottom-border {
+        background-color: #182D3C; /* 設定中間長方形的背景顏色為白色 原#fff8f2*/
+        width: 600px; /* 設定寬度 */
+        height: 40; /* 設定高度 */
+        margin: 40px auto; /* 水平置中，並設定上下邊距 */
+      }
+
+      .-button{
+        background-color: #7C7267;
+        width: 60px;
+        height: 25px;
+        font-size: 16px;
+        color: #ffffff;
+        border: 0;
+      }
+    </style>
+</head>
+<body>
+    <div class="content-search">
+        <button style="color: #F7EAE1; border: 0px;" type="button" onclick="window.location.href='/';"><img src="https://cdn.discordapp.com/attachments/1113453252973965473/1117388726289580082/image.png" height="45"></button>
+        <div style="text-align: center;border: 2px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/ROC_Taiwan_Railways_Administration_Logo.svg" height="75">
+        <br>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="start_station">起點站：</label>
+                <input type="text" name="start_station" id="start_station">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="end_station">終點站：</label>
+                <input type="text" name="end_station" id="end_station">
+            </div>
+            <br>
+            <button type="submit" class="-button">查詢</button>
+        </form>
+    </div>
+
+    <div class="content-result">
+        <div style="text-align: center;border: 2px;">
+        <pre>{{ result }}</pre>
+    </div>
+
+    <div class="bottom-border">
+        <br>
+    </div>
+</body>
+</html>

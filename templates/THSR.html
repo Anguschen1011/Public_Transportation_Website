@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>THSR</title>
+    <style>
+        body {
+        background-color: #182D3C; /* 設定網頁背景顏色為灰色#0f2d3f */
+        margin: 0; /* 移除預設的頁面邊距 */
+        padding: 0; /* 移除預設的元素內距 */
+      }
+
+      .content-search {
+        background-color: #F7EAE1; /* 設定中間長方形的背景顏色為白色 原#fff8f2*/
+        width: 1000px; /* 設定寬度 */
+        height: auto; /* 設定高度 */
+        margin: 40px auto; /* 水平置中，並設定上下邊距 */
+      }
+
+      .content-result {
+        background-color: #F7EAE1; /* 設定中間長方形的背景顏色為白色 原#fff8f2*/
+        width: 1000px; /* 設定寬度 */
+        height: auto; /* 設定高度 */
+        margin: 40px auto; /* 水平置中，並設定上下邊距 */
+      }
+
+      .bottom-border {
+        background-color: #182D3C; /* 設定中間長方形的背景顏色為白色 原#fff8f2*/
+        width: 1000px; /* 設定寬度 */
+        height: 40; /* 設定高度 */
+        margin: 40px auto; /* 水平置中，並設定上下邊距 */
+      }
+
+      .-button{
+        background-color: #7C7267;
+        width: 60px;
+        height: 25px;
+        font-size: 16px;
+        color: #ffffff;
+        border: 0;
+      }
+    </style>
+</head>
+<body>
+    <div class="content-search">
+        <button style="color: #F7EAE1; border: 0px;" type="button" onclick="window.location.href='/';"><img src="https://cdn.discordapp.com/attachments/1113453252973965473/1117388726289580082/image.png" height="45"></button>
+        <div style="text-align: center;border: 2px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/e/ec/Taiwan_High_Speed_Rail_Logo%28Log_Only%29.svg">
+    
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="-button">查詢</button>
+        </form>
+    </div>
+
+    <div class="content-result">
+        <div style="text-align: center;border: 2px;">
+        <div>
+            {% for train, schedule in result %}
+            <p>班次：{{ train }}</p>
+            <p>票價：{{ schedule }}</p>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="bottom-border">
+        <br>
+    </div>
+</body>
+</html>
+
+
